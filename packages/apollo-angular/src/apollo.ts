@@ -70,7 +70,7 @@ export class ApolloBase<TCacheShape = any> {
   ): Observable<MutationResult<T>> {
     return useMutationLoading(
       fromPromise(() => this.ensureClient().mutate<T, V>({...options})),
-      options.useMutationLoading ?? this.useMutationLoading,
+      options.useMutationLoading ? options.useMutationLoading : this.useMutationLoading,
     );
   }
 
